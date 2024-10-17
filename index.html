@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>✨ Premium Birthday Card ✨</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #fff9e6 0%, #ffe6f2 100%);
+        font-family: "Poppins", sans-serif;
+        padding: 20px;
+        overflow-x: hidden;
+      }
+
+      .card-container {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        width: 90%;
+        max-width: 600px;
+        text-align: center;
+        position: relative;
+        transition: all 0.5s ease;
+        z-index: 1;
+      }
+
+      .premium-heading {
+        font-family: "Dancing Script", cursive;
+        color: #ffd700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        font-size: 3em;
+        margin-bottom: 20px;
+      }
+
+      .message-container {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+        transition: all 0.3s ease;
+      }
+
+      .gombal-text {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.5em;
+        color: #ff4d6d;
+        margin: 20px 0;
+        padding: 20px;
+        background: linear-gradient(
+          45deg,
+          rgba(255, 215, 0, 0.1),
+          rgba(255, 105, 180, 0.1)
+        );
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        animation: fadeIn 0.5s ease;
+      }
+
+      .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      .premium-button {
+        background: linear-gradient(45deg, #ffd700, #ff69b4);
+        border: none;
+        border-radius: 25px;
+        color: white;
+        padding: 15px 30px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .premium-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .journey-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .journey-content {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        max-width: 80%;
+        position: relative;
+        animation: slideUp 0.5s ease;
+      }
+
+      .journey-text {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #333;
+      }
+
+      .floating-element {
+        position: fixed;
+        pointer-events: none;
+        animation: float 6s ease-in-out infinite;
+        z-index: 0;
+      }
+
+      .heart-particle {
+        position: absolute;
+        pointer-events: none;
+        animation: floatHeart 4s ease-in-out infinite;
+      }
+
+      .audio-player {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 12px 25px;
+        border-radius: 50px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1001;
+      }
+
+      .audio-button {
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        color: #ffd700;
+        transition: all 0.3s ease;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes floatHeart {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .card-container {
+          padding: 20px;
+        }
+
+        .premium-heading {
+          font-size: 2em;
+        }
+
+        .premium-button {
+          padding: 12px 24px;
+          font-size: 1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card-container">
+      <h1 class="premium-heading">✨ Happy Birthday! ✨</h1>
+      <div id="greeting-text"></div>
+      <div id="gombal-container" class="message-container"></div>
+
+      <div class="button-container">
+        <button class="premium-button" onclick="startLoveJourney()">
+          <i class="fas fa-heart"></i> Mulai Perjalanan Cinta
+        </button>
+        <button class="premium-button" onclick="showSurprise()">
+          <i class="fas fa-gift"></i> Kejutan Spesial
+        </button>
+        <button class="premium-button" onclick="shareToWhatsApp()">
+          <i class="fab fa-whatsapp"></i> Balas di WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <div id="journeyModal" class="journey-modal">
+      <div class="journey-content">
+        <div id="journeyText" class="journey-text"></div>
+        <button class="premium-button" onclick="nextJourneyStep()">
+          Lanjutkan ❤️
+        </button>
+      </div>
+    </div>
+
+    <div class="audio-player">
+      <button class="audio-button" onclick="toggleMusic()">
+        <i class="fas fa-music"></i>
+      </button>
+      <span id="musicStatus">Musik: Mati</span>
+    </div>
+
+    <audio id="bgMusic" loop>
+      <source src="diseluruhdunia.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script>
+      let playerName = '';
+      let currentGombalIndex = 0;
+      let currentJourneyStep = 0;
+
+      const gombalanList = [
+          "Eh {name}, tau gak persamaan kamu sama mentari? Sama-sama menerangi hariku dengan senyuman! ☀️",
+          "Coba deh {name} ngaca... itu senyumnya bikin bunganya pada iri loh! 🌸",
+          "Hey {name}, kalo kamu jadi WiFi pasti sinyalnya kuat banget... soalnya udah nyambung ke hatiku! 📶💕",
+          "Selamat ulang tahun {name}! Kamu tau gak kenapa hari ini spesial? Karena hari ini bidadari sepertimu turun ke bumi! 👼",
+          "Kamu tau gak {name}? Setiap kali liat senyummu, jantungku langsung sport! 💓"
+      ];
+
+      const journeySteps = [
+          "Di hari yang istimewa ini, {name} membuka mata dan menemukan dunia yang berbeda... ✨",
+          "Setiap langkah {name} meninggalkan jejak bunga yang bermekaran, seolah alam ikut berbahagia! 🌸",
+          "Cahaya mentari terasa lebih hangat, karena senyuman {name} sudah cukup untuk menerangi dunia! ☀️",
+          "Seperti bintang di langit malam, {name} selalu bersinar dengan caranya sendiri... ⭐",
+          "Dan di hari spesialmu ini, {name}, semua impianmu adalah bintang jatuh yang siap menjadi kenyataan! 🎉"
+      ];
+
+
+
+      window.onload = function() {
+          playerName = prompt("Hai cantik! Boleh tau nama kamu?", "Nama");
+          if (!playerName) playerName = "Sayang";
+          toggleMusic();
+
+          document.getElementById('greeting-text').innerHTML =
+              <p style="font-size: 1.5em; color: #ff4d6d;">Selamat Ulang Tahun, ${playerName}! 🎉</p>;
+
+          createFloatingElements();
+          showGombal();
+      };
+
+      function createFloatingElements() {
+          const elements = ['🎈', '🎉', '🎊', '🎁', '⭐', '💖', '✨'];
+          for (let i = 0; i < 15; i++) {
+              const element = document.createElement('div');
+              element.className = 'floating-element';
+              element.innerHTML = elements[Math.floor(Math.random() * elements.length)];
+              element.style.left = Math.random() * 100 + 'vw';
+              element.style.top = Math.random() * 100 + 'vh';
+              element.style.fontSize = '24px';
+              document.body.appendChild(element);
+          }
+      }
+
+      function showGombal() {
+          const gombal = gombalanList[currentGombalIndex].replace(/{name}/g, playerName);
+          const container = document.getElementById('gombal-container');
+          container.innerHTML = <div class="gombal-text">${gombal}</div>;
+          currentGombalIndex = (currentGombalIndex + 1) % gombalanList.length;
+      }
+
+      function startLoveJourney() {
+          const modal = document.getElementById('journeyModal');
+          modal.style.display = 'flex';
+          currentJourneyStep = 0;
+          showJourneyStep();
+      }
+
+      function showJourneyStep() {
+          const text = journeySteps[currentJourneyStep].replace(/{name}/g, playerName);
+          document.getElementById('journeyText').innerHTML = text;
+          createHeartParticles();
+      }
+
+      function nextJourneyStep() {
+          currentJourneyStep++;
+          if (currentJourneyStep >= journeySteps.length) {
+              document.getElementById('journeyModal').style.display = 'none';
+              showSurprise();
+              return;
+          }
+          showJourneyStep();
+      }
+
+      function createHeartParticles() {
+          const container = document.querySelector('.journey-modal');
+          container.querySelectorAll('.heart-particle').forEach(el => el.remove());
+
+          for (let i = 0; i < 10; i++) {
+              const heart = document.createElement('div');
+              heart.className = 'heart-particle';
+              heart.innerHTML = '❤️';
+              heart.style.left = Math.random() * 100 + 'vw';
+              heart.style.top = Math.random() * 100 + 'vh';
+              heart.style.fontSize = '24px';
+              container.appendChild(heart);
+          }
+      }
+
+      function showSurprise() {
+          const surprises = [
+              "✨ Kamu tau gak? Hari ini langit extra cerah karena ada yang ulang tahun! ✨",
+              "🌟 Di hari spesialmu ini, semoga semua mimpimu jadi kenyataan! 🌟",
+              "💝 Kamu adalah hadiah terindah yang pernah ada! 💝"
+          ];
+
+          const surprise = surprises[Math.floor(Math.random() * surprises.length)];
+          const container = document.getElementById('gombal-container');
+          container.innerHTML = <div class="gombal-text" style="font-size: 1.5em">${surprise}</div>;
+      }
+
+      function shareToWhatsApp() {
+          const message = Terima kasih ya , bebeknya mana?😁! 🎉✨;
+          window.open(https://wa.me/+628885797973?text=${encodeURIComponent(message)});
+      }
+
+      function toggleMusic() {
+          const audio = document.getElementById('bgMusic');
+          const status = document.getElementById('musicStatus');
+
+          if (audio.paused) {
+              audio.play();
+              status.textContent = 'Musik: Hidup';
+          } else {
+              audio.pause();
+              status.textContent = 'Musik: Mati';
+          }
+      }
+    </script>
+  </body>
+</html>
